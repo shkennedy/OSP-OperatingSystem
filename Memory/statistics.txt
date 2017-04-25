@@ -1,0 +1,12 @@
+         #Pages swapped | CPU Utilization | ServiceTime/Thread | Norm ServiceTime
+------------------------+-----------------+--------------------+------------------
+Student) r:1043 w:440   |   90.572395%    |     27625.418      |   0.05947676
+------------------------+-----------------+--------------------+------------------
+Demo)    r:1282 w:304   |   63.9156%      |     31949.691      |   0.049889814
+
+My implementation of page replacement uses LRU to find a candidate page to evict. 
+Each PageTableEntry has a timestamp indicating when it was last referenced by 
+do_refer. I linearly scan all frames, finding the first free frame or the oldest 
+timestamp. Since it is able to search for a less recently used page to evict, the
+chance of evicting a frame which is needed soon is low. This leads to an overall 
+lower miss count, and therefore greater CPU utilization and lower service time.  
